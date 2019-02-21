@@ -1,0 +1,93 @@
+<div class="search-div">
+    <button mat-raised-button (click)="onCreate()">
+      <mat-icon>add</mat-icon>Create
+    </button>
+    <mat-form-field class="search-form-field" floatLabel="never">
+      <input matInput [(ngModel)]="searchKey" placeholder="Search" autocomplete="off" (keyup)="applyFilter()">
+      <button mat-button matSuffix mat-icon-button aria-label="Clear"*ngIf="searchKey"  (click)="onSearchClear()">
+        <mat-icon>close</mat-icon>
+      </button>
+    </mat-form-field>
+  </div>
+  <div class="mat-elevation-z8">
+      <mat-table [dataSource]="listData"  matSort>
+          <ng-container matColumnDef="name">
+            <mat-header-cell *matHeaderCellDef  mat-sort-header>Full Name</mat-header-cell>
+            <mat-cell *matCellDef="let element">{{element.name}}</mat-cell>
+          </ng-container>
+          <ng-container matColumnDef="position">
+              <mat-header-cell *matHeaderCellDef  mat-sort-header>Position</mat-header-cell>
+              <mat-cell *matCellDef="let element">{{element.position}}</mat-cell>
+            </ng-container>
+            <ng-container matColumnDef="office">
+                <mat-header-cell *matHeaderCellDef mat-sort-header>Office</mat-header-cell>
+                <mat-cell *matCellDef="let element">{{element.office}}</mat-cell>
+              </ng-container>
+              <ng-container matColumnDef="salary">
+                  <mat-header-cell *matHeaderCellDef mat-sort-header>Salary</mat-header-cell>
+                  <mat-cell *matCellDef="let element">{{element.salary}}</mat-cell>
+                </ng-container>
+                <ng-container matColumnDef="department">
+                    <mat-header-cell *matHeaderCellDef mat-sort-header>Department</mat-header-cell>
+                    <mat-cell *matCellDef="let element">{{element.department}}</mat-cell>
+                  </ng-container>
+                  <ng-container matColumnDef="actions">
+                      <mat-header-cell *matHeaderCellDef></mat-header-cell>
+                      <mat-cell *matCellDef="let row">
+                        <button mat-icon-button (click)="onEdit(row)"><mat-icon>launch</mat-icon></button>
+                        <button mat-icon-button color="warn" (click)="onDelete(row.$key)"><mat-icon>delete_outline</mat-icon></button>
+                      </mat-cell>
+                    </ng-container>
+                    <ng-container matColumnDef="loading">
+                      <mat-footer-cell *matFooterCellDef colspan="6">
+                        Loading data...
+                      </mat-footer-cell>
+                    </ng-container>
+                    <ng-container matColumnDef="noData">
+                      <mat-footer-cell *matFooterCellDef colspan="6">
+                        No data.
+                      </mat-footer-cell>
+                    </ng-container>
+                    <mat-header-row *matHeaderRowDef="displayedColumns"></mat-header-row>
+                    <mat-row *matRowDef="let row; columns: displayedColumns;"></mat-row>
+                    <mat-footer-row *matFooterRowDef="['loading']" [ngClass]="{'hide':listData!=null}"></mat-footer-row>
+                    <mat-footer-row *matFooterRowDef="['noData']" [ngClass]="{'hide':!(listData!=null && listData.data.length==0)}"></mat-footer-row>
+                  </mat-table>
+                  <mat-paginator [pageSizeOptions]="[5, 10, 25, 100]" [pageSize]="5" showFirstLastButtons></mat-paginator>
+                </div>
+
+
+<!-- <form class="form-inline">
+   
+  <input class="form-control" name="searchInput" placeholder="Search" #searchInput="ngModel" [(ngModel)]="searchText" style="width : 80%;">
+  <button class="btn btn-primary" (click)="searchText=''">Search</button>
+  
+</form>
+<table class="table table-sm">
+  <thead>
+    <th>Full Name</th>
+    <th>Position</th>
+    <th>Office</th>
+    <th>Salary</th>
+    <th>Gender</th>
+    <th>Department</th>
+    <th>Date</th>
+    <th></th>
+  </thead>
+
+<ng-container *ngFor="let employee of employeeArray" >
+  <tr class="table-dark" *ngIf="filterCondition(employee)">
+      <td >{{employee.name}}</td>
+      <td>{{employee.position}}</td>
+      <td>{{employee.office}}</td>
+      <td>{{employee.salary}}</td>
+      <td>{{employee.gender}}</td>
+      <td>{{employee.department}}</td>
+      <td>{{employee.hireDate}}</td>
+      <td>
+        <a class="btn btn-outline-info" (click)="employeeService.populateForm(employee)">  <i class="fa fa-pencil-square-o"></i> </a>
+        <a class="btn btn-outline-danger" (click)="onDelete(employee.$key)"> <i class="fa fa-trash-o"></i>   </a>
+      </td>
+  </tr>
+</ng-container>
+</table> -->

@@ -1,0 +1,101 @@
+<mat-toolbar>
+    <span>{{employeeService.form.controls['$key'].value?"Modify Employee":"New Employee"}}</span>
+    <span class="fill-remaining-space"></span>
+    <button class="btn-dialog-close" mat-stroked-button (click)="onClose()" tabIndex="-1"><mat-icon>clear</mat-icon></button>
+  </mat-toolbar>
+<form [formGroup]="this.employeeService.form" class="normal-form">
+    <mat-grid-list cols="2" rowHeight="500px">
+      <mat-grid-tile>
+        <div class="controles-container">
+            <input type="hidden" formControlName="$key">
+               <mat-form-field>
+                <input formControlName="name" class="form-control" [ngClass]="{'is-invalid':submitted && formControls.name.errors}" matInput placeholder="Name">
+                
+              </mat-form-field>
+               <mat-form-field>
+                  <input formControlName="position" class="form-control" [ngClass]="{'is-invalid':submitted && formControls.position.errors}" matInput placeholder="Position">
+                 
+               </mat-form-field>
+               <mat-form-field>
+                  <input formControlName="office" class="form-control" [ngClass]="{'is-invalid':submitted && formControls.office.errors}" matInput placeholder="Office">
+                  
+                </mat-form-field>
+                <mat-form-field>
+                      <input formControlName="salary" class="form-control" type="number"  matInput placeholder="Salary">
+                      
+                </mat-form-field>
+           </div>
+        </mat-grid-tile>
+                <mat-grid-tile>
+                    <div class="controles-container">
+                      <div class="add-bottom-padding">
+                        <mat-radio-group formControlName="gender">
+                          <mat-radio-button value="Male">Male</mat-radio-button>
+                          <mat-radio-button value="Female">Female</mat-radio-button>
+                          
+                        </mat-radio-group>
+                      </div>
+                      <mat-form-field>
+                        <mat-select formControlName="department" placeholder="Department">
+                          <mat-option>None</mat-option>
+                          <ng-container *ngFor="let department of departmentService.array">
+                            <mat-option value="{{department.$key}}">{{department.code}}-{{department.name}}</mat-option>
+                          </ng-container>
+                        </mat-select>
+                      </mat-form-field>
+                <mat-form-field>
+                    <input formControlName="hireDate" class="form-control"  matInput [matDatepicker]="picker" placeholder="Hire Date">
+                    <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
+                    <mat-datepicker #picker></mat-datepicker>
+                  </mat-form-field>
+                  <div class="add-bottom-padding">
+                      <mat-checkbox formControlName="isPermanent">Permanent Employee</mat-checkbox>
+                    </div>
+                <div class="button-row">
+                    <button mat-raised-button color="primary" (click)="onSubmit(employeeForm)" type="submit" [disabled]="this.employeeService.form.invalid">Submit</button>
+                    <button mat-raised-button color="warn" (click)="resetForm(employeeForm)">Clear</button>
+                </div>
+                
+              </div>
+            </mat-grid-tile>
+          </mat-grid-list>
+        </form>
+        
+  <!-- <div class="form-group">
+    <label>Name</label>
+    
+    <div class="invalid-feedback" *ngIf="submitted && formControls.name.errors">
+      This field is required.</div>
+  </div> -->
+  <!-- <div class="form-group">
+    <label>Position</label>
+    
+        <div class="invalid-feedback" *ngIf="submitted && formControls.position.errors">
+            This field is required..</div>
+  </div> -->
+  <!-- <div class="form-group">
+    <label>Office</label>
+    
+        <div class="invalid-feedback" *ngIf="submitted && formControls.office.errors">This field is required.</div>
+  </div> -->
+  <!-- <div class="form-group">
+    <label>Salary</label>
+    <div class="input-group">
+        <div class="input-group-addon">
+          <i class="fa fa-eur"></i>
+        </div>
+        <input formControlName="salary" class="form-control" type="number">
+    </div>
+  </div> -->
+
+  <!-- <div class="form-group">
+    <button class="btn btn-default" type="submit" [disabled]="!this.employeeService.form.valid">
+      <i class="fa fa-floppy-o"></i>
+       Submit</button>
+    <button class="btn btn-default" type="button" (click)="resetForm(employeeForm)">
+      <i class="fa fa-repeat"></i>
+       Reset</button>
+  </div>
+</form> -->
+
+
