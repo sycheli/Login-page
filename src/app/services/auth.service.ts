@@ -2,8 +2,9 @@ import { Injectable } from '@angular/core';
 import { Router } from '@angular/router';
 
 import { AngularFireAuth } from 'angularfire2/auth';
-import * as firebase from 'firebase/app';
+
 import { Observable } from 'rxjs/internal/Observable';
+import * as firebase from 'firebase';
 
 @Injectable()
 export class AuthService {
@@ -57,5 +58,13 @@ export class AuthService {
   logout() {
     this._firebaseAuth.auth.signOut()
     .then((res) => this.router.navigate(['/']));
+  }
+  doRegister(email, password){
+    return new Promise<any>((resolve, reject) => {
+      firebase.auth().createUserWithEmailAndPassword(email,password)
+      .then(res => {
+        resolve(res);
+      }, err => reject(err))
+    })
   }
 }

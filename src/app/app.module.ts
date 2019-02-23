@@ -4,12 +4,12 @@ import { NgModule } from '@angular/core';
 import { AppRoutes } from './app.routes';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { AppComponent } from './app.component';
-import { LoginComponent } from './views/login/login.component';
+import { LoginComponent } from './views/user/login/login.component';
 import { DashboardComponent } from './views/dashboard/dashboard.component';
 import { environment } from '../environments/environment';
 import { AngularFireModule } from 'angularfire2';
 import { AngularFireDatabaseModule } from 'angularfire2/database';
-import { AngularFireAuthModule } from 'angularfire2/auth';
+import { AngularFireAuthModule ,} from 'angularfire2/auth';
 import { AuthService } from './services/auth.service';
 import { AuthGuard } from './services/auth-guard.service';
 import { EmployeeComponent } from './views/employees/employee/employee.component';
@@ -21,6 +21,8 @@ import { EmployeesComponent } from './views/employees/employees.component';
 import { DatePipe } from '@angular/common';
 import { DepartmentService } from './views/employees/shared/department.service';
 import { MatConfirmDialogComponent } from './views/mat-confirm-dialog/mat-confirm-dialog.component';
+import { RegisterComponent } from './views/user/register/register.component';
+import { UserComponent } from './views/user/user.component';
 
 
 
@@ -33,6 +35,8 @@ import { MatConfirmDialogComponent } from './views/mat-confirm-dialog/mat-confir
     EmployeeListComponent,
     EmployeesComponent,
     MatConfirmDialogComponent,
+    RegisterComponent,
+    UserComponent,
     
     
     
@@ -42,7 +46,7 @@ import { MatConfirmDialogComponent } from './views/mat-confirm-dialog/mat-confir
     NoopAnimationsModule,
     AppRoutes,
     FormsModule,
-    AngularFireModule.initializeApp(environment.firebase, 'angular-auth-firebase'),
+    AngularFireModule.initializeApp(environment.firebase),
     AngularFireDatabaseModule,
     AngularFireAuthModule,
     ToastrModule.forRoot(),
