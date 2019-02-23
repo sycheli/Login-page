@@ -69,33 +69,41 @@
                   </div>
                 </div>
                 <div class="row">
-                  <div class="input-field col s12">
+                    <div class="form-group">
                     <button type="buton" class="btn btn-success btn-block" style="margin-bottom: 20px"
                       (click)="signInWithEmail()" [disabled]="formCtrl.form.invalid">
                       Sign In
                     </button>
+                    </div>
+                    <div class="form-group">
+                    <button class="btn btn-link-1 btn-link-1-facebook" (click)="signInWithFacebook()">
+                        <i class="fa fa-facebook"></i> Facebook
+                      </button>
+                    </div>
+                    <div class="form-group">
+                      <button class="btn btn-link-1 btn-link-1-google-plus" (click)="signInWithGoogle()">
+                          <i class="fa fa-google-plus"></i> Google Plus
+                        </button>
                   </div>
+
+                  <div class="social-login-buttons">
+                      
+        
+                      
+                    </div>
                 </div>
+                
 
               </form>
+              
             </div>
+            
           </div>
+          
         </div>
-        <div class="row">
-          <div class="col-sm-4 col-sm-offset-3 social-login">
-            <h3>...or login with:</h3>
-            <div class="social-login-buttons">
-              <a class="btn btn-link-1 btn-link-1-facebook" (click)="signInWithFacebook()">
-                <i class="fa fa-facebook"></i> Facebook
-              </a>
-
-              <a class="btn btn-link-1 btn-link-1-google-plus" (click)="signInWithGoogle()">
-                <i class="fa fa-google-plus"></i> Google Plus
-              </a>
-            </div>
-          </div>
-        </div>
+        
       </div>
+      
     </div>
 
   </div>
