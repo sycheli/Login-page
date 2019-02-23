@@ -84,7 +84,7 @@ h3 {
 /***** Top content *****/
 
 .inner-bg {
-    padding: 100px 0 170px 0;
+    padding: 100px 0 170px 1;
 }
 
 .top-content .text {
@@ -106,7 +106,7 @@ h3 {
 .top-content .description a:focus { border-bottom: 1px dotted #fff; }
 
 .form-box {
-	margin-top: 35px;
+	margin-top: 5px;
 }
 
 .form-top {
